@@ -6,12 +6,16 @@ function App() {
 
   console.log(watch("example"));
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input defaultValue="test" {...register("example")} />
-      <input {...register("exampleReq", { required: true })} />
-      {errors.exampleReq && <span>This is required</span>}
-      <input type="submit" />
-    </form>
+    <div className="container mx-auto">
+      <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
+        <input className="input input-bordered w-full max-w-xs" defaultValue="test" {...register("example")} />
+        <div className="form-control">
+          <input className="input input-bordered w-full max-w-xs" {...register("exampleReq", { required: true })} />
+          {errors.exampleReq && <span>This is required</span>}
+        </div>
+        <input className="btn" type="submit" />
+      </form>
+    </div>
   )
 }
 
