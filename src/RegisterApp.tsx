@@ -1,8 +1,18 @@
 import { useForm } from "react-hook-form";
 
+type FormInput = {
+  firstName: string,
+  gender: string
+}
+
 function RegisterApp() {
-  const { register, handleSubmit } = useForm();
-  const onSubmit = data => console.log(data);
+  const { register, handleSubmit } = useForm<FormInput>({
+    defaultValues: {
+      firstName: "",
+      gender: "femail"
+    }
+  });
+  const onSubmit = (data: FormInput) => console.log(data);
   return (
     <div className="container mx-auto">
       <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
